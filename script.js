@@ -47,7 +47,7 @@ function displayPhotos() {
 //Re.fetching when the user is about to completely scroll down
 function automaticNewImagesLoad() {
     if(window.pageYOffset >= document.documentElement.offsetHeight-20000)
-        console.log("Time to load more images")
+        console.log("Time to load more images");
 }
 
 //Event listener
