@@ -12,6 +12,7 @@ body {
 h1 {
     text-align: center;
     letter-spacing: 5px;
+    font-size: 2.5rem;
 }
 
 /* Loader */
@@ -32,6 +33,8 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
+/* Image container */
+
 #image_container {
     margin: 10px 20%;
 }
@@ -39,4 +42,20 @@ h1 {
 #image_container img {
     width: 100%;
     margin: 0.5rem 0;
+}
+
+/* Phone and tablet */
+@media screen and (max-width:600px) {
+    h1 {
+        letter-spacing: 2px;
+        font-size: 1.5rem;
+    }
+
+    #image_container {
+        margin: 10px;
+    }
+
+    #image_container img {
+        margin: 3px 0;
+    }
 }
