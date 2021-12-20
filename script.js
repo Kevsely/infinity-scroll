@@ -8,13 +8,18 @@ let readyToReload = true;
 
 //DOM Elements
 const image_container = document.getElementById("image_container");
+const spinner_mask = document.getElementById("spinner_mask");
 
 //Fetching API to get the photos
 async function getPhotos() {
+    if (!apiPhotos.length) 
+        spinner_mask.hidden = false;
     const response = await fetch(unsplashApi);
     apiPhotos = await response.json();
     displayPhotos();
     readyToReload = true;
+    if(!spinner_mask.hidden)
+        spinner_mask.hidden = true;
 }
 
 //Helper func. to set image attributes
@@ -58,4 +63,4 @@ function automaticNewImagesLoad() {
 //Event listener
 window.addEventListener("scroll", automaticNewImagesLoad);
 
-// getPhotos();
+getPhotos();
