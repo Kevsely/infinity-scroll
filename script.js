@@ -4,6 +4,8 @@ const unsplashApi = `https://api.unsplash.com/photos/random/?client_id=${access_
 
 let apiPhotos = [];
 
+let readyToReload = true;
+
 //DOM Elements
 const image_container = document.getElementById("image_container");
 
@@ -12,6 +14,7 @@ async function getPhotos() {
     const response = await fetch(unsplashApi);
     apiPhotos = await response.json();
     displayPhotos();
+    readyToReload = true;
 }
 
 //Helper func. to set image attributes
@@ -46,11 +49,13 @@ function displayPhotos() {
 
 //Re.fetching when the user is about to completely scroll down
 function automaticNewImagesLoad() {
-    if(window.pageYOffset >= document.documentElement.offsetHeight-20000)
-        console.log("Time to load more images");
+    if(readyToReload && document.documentElement.scrollTop >= document.documentElement.offsetHeight-2000) {
+        readyToReload = false;
+        getPhotos();
+    }
 }
 
 //Event listener
 window.addEventListener("scroll", automaticNewImagesLoad);
 
-getPhotos();
+// getPhotos();
